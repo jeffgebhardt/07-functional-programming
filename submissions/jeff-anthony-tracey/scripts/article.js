@@ -87,6 +87,7 @@
     })
     .reduce(function(a, b) {
       // return (TODO: Sum up all the values!)
+      return a + b;
     });
   };
 
