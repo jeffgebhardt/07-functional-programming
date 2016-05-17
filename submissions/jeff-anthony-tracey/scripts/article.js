@@ -116,14 +116,25 @@
         One for the author's name, and one for the total number of words across
         the matching articles written by the specified author. */
     return Article.allAuthors().map(function(a) { // 'a' is a reference to an individual author.
-      return {
-        // name:
-        // numWords: someCollection.filter(function(curArticle) {
+      var b = {
+        name: a,
+        numWords: Article.all.filter(function(curArticle) {
         //  what do we return here to check for matching authors?
-        // })
+          // var authorNames =   Article.allAuthors();
+          if(a === curArticle.author){
+            return curArticle;
+
+          }
+        }).map(function(a){
+          return a.body.match(/\b\w+/g).length;
+        }).reduce(function(a, b) {
+          return a + b;
+        })
         // .map(...) // use .map to return the author's word count for each article's body (hint: regexp!).
         // .reduce(...) // squash this array of numbers into one big number!
       };
+      console.log(b);
+      return b;
     });
   };
 
